@@ -1,0 +1,114 @@
+/* File: public/css/loans/tampilan.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #00ff00;
+}
+
+.loan-records-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.loan-records-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00ff00;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.create-button {
+    background-color: #00ff00;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 0px #0a0a0a;
+    margin-bottom: 20px;
+}
+
+.create-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0px #0a0a0a;
+}
+
+.loan-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loan-table thead th {
+    background: #00ff00;
+    color: #000000;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #00cc00;
+}
+
+.loan-table tbody td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+    color: #00ff00;
+}
+
+.loan-table tbody tr:hover {
+    background-color: #444;
+}
+
+.loan-table tbody tr:nth-child(even) {
+    background-color: #333;
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 8px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-edit {
+    background-color: #00ff00;
+    color: #333;
+    box-shadow: 0 4px 0px #0a0a0a;
+}
+
+.btn-edit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0px #0a0a0a;
+}
+
+.btn-delete {
+    background-color: #ff3333;
+    color: #fff;
+    box-shadow: 0 4px 0px #0a0a0a;
+}
+
+.btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0px #0a0a0a;
+}
+
+.text-center {
+    font-style: italic;
+    color: #888;
+    font-weight: bold;
+    padding: 20px;
+}

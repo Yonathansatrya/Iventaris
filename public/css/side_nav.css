@@ -1,0 +1,112 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #007bff;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    transition: width 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.hide {
+    width: 0;
+    overflow: hidden;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li.active {
+    background-color: #0056b3;
+}
+
+.sidebar ul li:hover {
+    background-color: #0056b3;
+}
+
+/* Navbar Styling */
+.navbar {
+    width: calc(100% - 250px);
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    margin-left: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: margin-left 0.3s;
+}
+
+.navbar.hide {
+    margin-left: 0;
+}
+
+.toggle-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+
+/* Content Area */
+.content {
+    padding: 20px;
+    margin-left: 250px;
+    width: 100%;
+    transition: margin-left 0.3s;
+}
+
+.content.hide {
+    margin-left: 0;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar ul li {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .sidebar ul li a {
+        display: none; /* Menyembunyikan teks link */
+    }
+
+    .sidebar ul li:hover a {
+        display: block; /* Menampilkan saat hover */
+    }
+
+    .toggle-button {
+        display: block;
+    }
+
+    .content {
+        margin-left: 60px;
+    }
+}
