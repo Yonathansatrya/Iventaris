@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h2 id="form-title">Login</h2>
-        <div class="form-container">
-            <form id="login-form" class="form" action="{{ route('login') }}" method="POST">
+    <div class="login-container">
+        <div class="login-form-wrapper">
+            <h2 id="form-title">Login</h2>
+            <form id="login-form" action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="input-group">
                     <label for="email">Email</label>
@@ -23,6 +23,9 @@
                 </div>
                 <button type="submit" class="btn-login">Login</button>
             </form>
+            <div class="forgot-password-link">
+                <a href="{{ route('password.request') }}">Lupa Password?</a>
+            </div>
         </div>
     </div>
 </body>

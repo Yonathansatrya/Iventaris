@@ -1,4 +1,4 @@
-/* login.css */
+/* reset-password.css */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -6,7 +6,7 @@ body {
     padding: 0;
 }
 
-.login-container {
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,14 @@ body {
     background-color: #ffffff;
 }
 
-.login-form-wrapper {
+.container h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+form {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;
@@ -22,12 +29,6 @@ body {
     width: 100%;
     max-width: 400px;
     text-align: center;
-}
-
-#form-title {
-    font-size: 24px;
-    color: #007bff;
-    margin-bottom: 20px;
 }
 
 .input-group {
@@ -49,7 +50,7 @@ body {
     margin-top: 5px;
 }
 
-.btn-login {
+button {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -62,35 +63,22 @@ body {
     transition: background-color 0.3s;
 }
 
-.btn-login:hover {
+button:hover {
     background-color: #0056b3;
-}
-
-.forgot-password-link {
-    margin-top: 20px;
-}
-
-.forgot-password-link a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.forgot-password-link a:hover {
-    text-decoration: underline;
 }
 
 /* Responsif */
 @media (max-width: 600px) {
-    .login-form-wrapper {
+    form {
         padding: 30px;
         width: 90%;
     }
 
-    #form-title {
+    .container h2 {
         font-size: 20px;
     }
 
-    .input-group input, .btn-login {
+    .input-group input, button {
         font-size: 14px;
     }
 }

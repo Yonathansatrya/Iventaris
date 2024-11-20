@@ -12,14 +12,14 @@
     <form action="{{ route('items.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="item_number">Item Number</label>
+            <label for="item_number">Nomor Barang</label>
             <input type="text" id="item_number" name="item_number" required>
             @error('item_number')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
-            <label for="item_name">Item Name</label>
+            <label for="item_name">Nama Barang</label>
             <input type="text" id="item_name" name="item_name" required>
             @error('item_name')
                 <div class="text-danger">{{ $message }}</div>
