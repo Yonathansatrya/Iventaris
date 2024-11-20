@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ItemConditionController;
+use App\Http\Controllers\ItemGetController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'LoginForm'])->name('login');
@@ -40,5 +42,24 @@ Route::post('forgot-password', [AuthController::class, 'sendResetLinkEmail'])->n
 Route::get('reset-password/{token}', [AuthController::class, 'showReset'])->name('password.reset');
 Route::post('reset-password', [AuthController::class, 'reset'])->name('password.update');
 
+Route::prefix('item_conditions')->name('item_conditions.')->group(function () {
+    Route::get('/', [ItemConditionController::class, 'index'])->name('index');
+    Route::get('/create', [ItemConditionController::class, 'create'])->name('create');
+    Route::post('/', [ItemConditionController::class, 'store'])->name('store');
+    Route::get('/{itemCondition}', [ItemConditionController::class, 'show'])->name('show');
+    Route::get('/{itemCondition}/edit', [ItemConditionController::class, 'edit'])->name('edit');
+    Route::put('/{itemCondition}', [ItemConditionController::class, 'update'])->name('update');
+    Route::delete('/{itemCondition}', [ItemConditionController::class, 'destroy'])->name('destroy');
+});
 
+
+
+Route::prefix('item_gets')->name('item_gets.')->group(function () {
+    Route::get('/', [ItemGetController::class, 'index'])->name('index');
+    Route::get('/create', [ItemGetController::class, 'create'])->name('create');
+    Route::post('/', [ItemGetController::class, 'store'])->name('store');
+    Route::get('/{itemGet}/edit', [ItemGetController::class, 'edit'])->name('edit');
+    Route::put('/{itemGet}', [ItemGetController::class, 'update'])->name('update');
+    Route::delete('/{itemGet}', [ItemGetController::class, 'destroy'])->name('destroy');
+});
 
