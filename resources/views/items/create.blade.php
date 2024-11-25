@@ -1,4 +1,4 @@
-@extends('layout.side_nav')
+@extends('layouts.app')
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/Item/create.css') }}">
@@ -9,7 +9,7 @@
             {{ session('success') }}
         </div>
     @endif
-    <form action="{{ route('items.store') }}" method="POST">
+    <form action="{{ route('item.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="item_number">Nomor Barang</label>
@@ -46,7 +46,7 @@
         </div>
         <div class="button-group">
             <button type="submit" class="btn btn-primary">Create Item</button>
-            <a href="{{ route('items.index') }}" class="btn btn-secondary">Cancel</a>
+            <a href="{{ route('item.index') }}" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>

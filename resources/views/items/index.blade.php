@@ -9,7 +9,7 @@
             {{ session('success') }}
         </div>
     @endif
-    <a href="{{ route('items.create') }}" class="btn btn-create mb-3">Create Item</a>
+    <a href="{{ route('item.create') }}" class="btn btn-create mb-3">Create Item</a>
     <table class="table">
         <thead>
             <tr>

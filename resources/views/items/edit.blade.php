@@ -9,7 +9,7 @@
             {{ session('success') }}
         </div>
     @endif
-    <form action="{{ route('items.update', $item->id) }}" method="POST">
+    <form action="{{ route('item.update', $item->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -47,7 +47,7 @@
         </div>
         <div class="button-group">
             <button type="submit" class="btn btn-primary">Update Item</button>
-            <a href="{{ route('items.index') }}" class="btn btn-secondary">Cancel</a>
+            <a href="{{ route('item.index') }}" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>

@@ -41,21 +41,21 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ route('laboran.dashboard') }}">
                             <i class='bx bx-home-alt icon' ></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="{{ route('items.index') }}">
+                        <a href="{{ route('item.index') }}">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Stok Barang</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ route('loans.index') }}">
                             <i class='bx bx-pie-chart-alt icon' ></i>
                             <span class="text nav-text">Peminjaman</span>
                         </a>
@@ -86,26 +86,17 @@
             </div>
 
             <div class="bottom-content">
-                <li class="">
-                    <a href="{{ route('logout') }}">
-                        <i class='bx bx-log-out icon' ></i>
+                <li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
-
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark mode</span>
-
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-
             </div>
+            .
         </div>
 
     </nav>

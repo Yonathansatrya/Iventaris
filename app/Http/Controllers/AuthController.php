@@ -39,7 +39,7 @@ class AuthController extends Controller
     {
         return view('auth.password');
     }
-    
+
     public function sendResetLinkEmail(Request $request)
     {
         $request->validate(['email' => 'required|email']);

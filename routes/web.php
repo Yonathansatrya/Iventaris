@@ -25,7 +25,7 @@ Route::middleware(['Jabatan:Laboran'])->group(function () {
         Route::post('/{loan}/return', [LoanController::class, 'returnItem'])->name('return');
     });
 
-    Route::prefix('item')->name('items.')->group(function () {
+    Route::prefix('item')->name('item.')->group(function () {
         Route::get('/', [ItemController::class, 'index'])->name('index');
         Route::get('/create', [ItemController::class, 'create'])->name('create');
         Route::post('/', [ItemController::class, 'store'])->name('store');

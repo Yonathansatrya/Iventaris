@@ -1,4 +1,4 @@
-@extends('layout.side_nav')
+@extends('layouts.app')
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/loans/edit.css') }}">
