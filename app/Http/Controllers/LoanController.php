@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Loan;
 use App\Models\LoanCondition;
 use App\Models\Item;
+use App\Models\Loan_condition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -62,7 +63,7 @@ class LoanController extends Controller
             $photoReportPath = $request->file('photo_report')->store('damage_photos');
         }
 
-        LoanCondition::create([
+        Loan_condition::create([
             'loan_id' => $loan->id,
             'status_condition' => $request->status_condition,
             'damage_report' => $request->damage_report,
@@ -71,5 +72,21 @@ class LoanController extends Controller
         ]);
 
         return redirect()->route('loans.index')->with('success', 'Kondisi barang berhasil dicatat.');
+    }
+    public function edit(Loan $loan)
+    {
+        return view('loans.edit', compact('loan'));
+    }
+    public function update(Request $request, Loan $loan)
+    {
+        $request->validate([
+            'borrow_end_date' => 'required|date|after_or_equal:borrow_start_date',
+        ]);
+
+        $loan->update([
+            'borrow_end_date' => $request->borrow_end_date,
+        ]);
+
+        return redirect()->route('loans.index')->with('success', 'Masa pinjaman berhasil diperpanjang.');
     }
 }

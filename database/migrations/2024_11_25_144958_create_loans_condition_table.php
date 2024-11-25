@@ -14,7 +14,7 @@ class CreateLoansConditionTable extends Migration
             $table->enum('status_condition', ['normal', 'rusak_ringan', 'rusak_berat']);
             $table->string('damage_report')->nullable();
             $table->string('photo_report')->nullable();
-            $table->string('responsibility');
+            $table->string('responsibility')->nullable();
             $table->timestamps();
         });
     }

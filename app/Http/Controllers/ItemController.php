@@ -11,13 +11,13 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all(); // Get all items
-        return view('items.index', compact('items')); // Return view with items
+        return view('items.index', compact('items'));
     }
 
     // Show the form for creating a new item
     public function create()
     {
-        return view('items.create'); // Show create item form
+        return view('items.create');
     }
 
     // Store a newly created item in storage
@@ -31,18 +31,18 @@ class ItemController extends Controller
             'status' => 'required|string|max:50',
         ]);
 
-        Item::create($validatedData); // Create the item
+        Item::create($validatedData);
 
-        return redirect()->route('items.index')->with('success', 'Item created successfully.'); // Redirect with success message
+        return redirect()->route('items.index')->with('success', 'Item created successfully.');
     }
 
-    // Display the specified item
+
     public function show(Item $item)
     {
         return view('items.show', compact('item')); // Show item details
     }
 
-    // Show the form for editing the specified item
+
     public function edit(Item $item)
     {
         return view('items.edit', compact('item')); // Show edit item form
