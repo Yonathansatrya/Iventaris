@@ -1,45 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/Item/index.css') }}">
-<div class="container">
-    <h1>Item List</h1>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    <a href="{{ route('item.create') }}" class="btn btn-create mb-3">Create Item</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Item Number</th>
-                <th>Item Name</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse ($items as $item)
+    <div class="container">
+        <h1>Daftar Barang</h1>
+        <a href="{{ route('items.create') }}" class="btn btn-primary mb-3">Tambah Barang Baru</a>
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>{{ $item->item_number }}</td>
-                    <td>{{ $item->item_name }}</td>
-                    <td>{{ $item->status }}</td>
-                    <td>
-                        <a href="{{ route('items.edit', $item->id) }}" class="btn btn-edit btn-sm">Edit</a>
-                        <form action="{{ route('items.destroy', $item->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-delete btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
-                        </form>
-                    </td>
+                    <th>Kode Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Tipe Barang</th>
+                    <th>Total Barang</th>
+                    <th>Status Barang</th>
+                    <th>Aksi</th>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="4" class="text-center">No items found.</td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                @foreach ($items as $item)
+                    <tr>
+                        <td>{{ $item->code_item }}</td>
+                        <td>{{ $item->item_name }}</td>
+                        <td>{{ ucfirst($item->type_item) }}</td>
+                        <td>{{ $item->total_item }}</td>
+                        <td>{{ \App\Models\Item::getStatuses()[$item->status] }}</td>
+                        <td>
+                            <a href="{{ route('items.edit', $item) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('items.destroy', $item) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection

@@ -15,11 +15,12 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('item_number')->unique();
+            $table->string('code_item')->unique();
             $table->string('item_name');
             $table->enum('type_item',['inventaris','bahan'])->default('inventaris');
-            $table->enum('status',['dipinjam','rusak','tersedia','tidak tersedia'])->default('tersedia');
             $table->string('total_item');
+            $table->date('date_in_item');
+            $table->enum('status', ['tersedia', 'tidak tersedia', 'dipinjamkan', 'rusak'])->default('tersedia');
             $table->timestamps();
         });
     }

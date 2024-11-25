@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemCondition extends Model
+class ItemUse extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'loan_id',
-        'condition_status',
+        'item_id',
+        'total_use',
         'description',
-        'damage_report',
-        'responsibility'
+        'status',
     ];
 
-    public function loan()
+    public function item()
     {
-        return $this->belongsTo(Loan::class);
+        return $this->belongsTo(Item::class);
     }
 }

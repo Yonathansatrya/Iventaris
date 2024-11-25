@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemConditionsTable extends Migration
+class CreateItemUsesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateItemConditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_conditions', function (Blueprint $table) {
+        Schema::create('item_uses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('loan_id')->constrained('loans')->onDelete('cascade');
-            $table->enum('condition_status',['normal','rusak_ringan','rusak_berat'])->default('normal');
+            $table->unsignedBigInteger('item_id');
+            $table->integer('total_use');
             $table->text('description')->nullable();
-            $table->string('damage_report')->nullable();
-            $table->string('responsibility')->nullable();
             $table->timestamps();
+
+            // Foreign key untuk item_id
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 
@@ -31,6 +32,6 @@ class CreateItemConditionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_conditions');
+        Schema::dropIfExists('item_uses');
     }
 }

@@ -9,16 +9,21 @@ class Loan extends Model
 {
     use HasFactory;
 
-    protected $table = 'loans';
-
     protected $fillable = [
+        'student_name',
         'item_id',
-        'name_borrows',
-        'borrow_date',
-        'return_date',
+        'borrow_start_date',
+        'borrow_end_date',
+        'description',
     ];
+
     public function item()
     {
         return $this->belongsTo(Item::class);
+    }
+
+    public function condition()
+    {
+        return $this->hasOne(Loan_condition::class);
     }
 }

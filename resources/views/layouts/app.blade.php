@@ -48,7 +48,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="{{ route('item.index') }}">
+                        <a href="{{ route('items.index') }}">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Stok Barang</span>
                         </a>
