@@ -2,74 +2,111 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Item; // Import the Item model
+use App\Models\ItemsIn;
+use App\Models\ItemUse;
+use App\Models\DamageItem;
+use App\Models\RepairDamageItem;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    // Display a listing of items
-    public function index()
+    // CRUD untuk ItemsIn
+    public function createItemIn(Request $request)
     {
-        $items = Item::all(); // Get all items
-        return view('items.index', compact('items'));
+        $item = ItemsIn::create($request->all());
+        return response()->json($item);
     }
 
-    // Show the form for creating a new item
-    public function create()
+    public function getItemIn($id)
     {
-        return view('items.create');
+        return ItemsIn::findOrFail($id);
     }
 
-    // Store a newly created item in storage
-    public function store(Request $request)
+    public function updateItemIn(Request $request, $id)
     {
-        // Validate and store the item
-        $validatedData = $request->validate([
-            'item_number' => 'required|string|max:255|unique:items',
-            'item_name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'status' => 'required|string|max:50',
-        ]);
-
-        Item::create($validatedData);
-
-        return redirect()->route('items.index')->with('success', 'Item created successfully.');
+        $item = ItemsIn::findOrFail($id);
+        $item->update($request->all());
+        return response()->json($item);
     }
 
-
-    public function show(Item $item)
+    public function deleteItemIn($id)
     {
-        return view('items.show', compact('item')); // Show item details
+        ItemsIn::destroy($id);
+        return response()->json(['message' => 'Item deleted successfully']);
     }
 
-
-    public function edit(Item $item)
+    // CRUD untuk ItemUse
+    public function createItemUse(Request $request)
     {
-        return view('items.edit', compact('item')); // Show edit item form
+        $itemUse = ItemUse::create($request->all());
+        return response()->json($itemUse);
     }
 
-    // Update the specified item in storage
-    public function update(Request $request, Item $item)
+    public function getItemUse($id)
     {
-        // Validate and update the item
-        $validatedData = $request->validate([
-            'item_number' => 'required|string|max:255',
-            'item_name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'status' => 'required|string|max:50',
-        ]);
-
-        $item->update($validatedData); // Update the item
-
-        return redirect()->route('items.index')->with('success', 'Item updated successfully.'); // Redirect with success message
+        return ItemUse::findOrFail($id);
     }
 
-    // Remove the specified item from storage
-    public function destroy(Item $item)
+    public function updateItemUse(Request $request, $id)
     {
-        $item->delete(); // Delete the item
+        $itemUse = ItemUse::findOrFail($id);
+        $itemUse->update($request->all());
+        return response()->json($itemUse);
+    }
 
-        return redirect()->route('items.index')->with('success', 'Item deleted successfully.'); // Redirect with success message
+    public function deleteItemUse($id)
+    {
+        ItemUse::destroy($id);
+        return response()->json(['message' => 'ItemUse deleted successfully']);
+    }
+
+    // CRUD untuk DamageItem
+    public function createDamageItem(Request $request)
+    {
+        $damageItem = DamageItem::create($request->all());
+        return response()->json($damageItem);
+    }
+
+    public function getDamageItem($id)
+    {
+        return DamageItem::with('repairs')->findOrFail($id);
+    }
+
+    public function updateDamageItem(Request $request, $id)
+    {
+        $damageItem = DamageItem::findOrFail($id);
+        $damageItem->update($request->all());
+        return response()->json($damageItem);
+    }
+
+    public function deleteDamageItem($id)
+    {
+        DamageItem::destroy($id);
+        return response()->json(['message' => 'DamageItem deleted successfully']);
+    }
+
+    // CRUD untuk RepairDamageItem
+    public function createRepairDamageItem(Request $request)
+    {
+        $repairDamageItem = RepairDamageItem::create($request->all());
+        return response()->json($repairDamageItem);
+    }
+
+    public function getRepairDamageItem($id)
+    {
+        return RepairDamageItem::findOrFail($id);
+    }
+
+    public function updateRepairDamageItem(Request $request, $id)
+    {
+        $repairDamageItem = RepairDamageItem::findOrFail($id);
+        $repairDamageItem->update($request->all());
+        return response()->json($repairDamageItem);
+    }
+
+    public function deleteRepairDamageItem($id)
+    {
+        RepairDamageItem::destroy($id);
+        return response()->json(['message' => 'RepairDamageItem deleted successfully']);
     }
 }
-

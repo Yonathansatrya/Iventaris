@@ -9,15 +9,10 @@ class ItemUse extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'item_id',
-        'total_use',
-        'description',
-        'status',
-    ];
+    protected $fillable = ['item_id', 'total_use', 'description'];
 
     public function item()
     {
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo(ItemsIn::class, 'item_id');
     }
 }
