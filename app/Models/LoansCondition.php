@@ -9,6 +9,8 @@ class LoansCondition extends Model
 {
     use HasFactory;
 
+    protected $table = 'loans_condition';
+
     protected $fillable = ['loan_id', 'specification', 'total_loan', 'date_return_item', 'status_condition', 'damage_report', 'photo_report'];
 
     public function loan()

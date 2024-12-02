@@ -62,100 +62,110 @@ class ItemController extends Controller
         return redirect()->route('items_in.index')->with('success', 'Item berhasil dihapus');
     }
 
-    // CRUD untuk ItemUse
+    // ----- Item Use -----
     public function indexItemUse()
     {
-        $itemUses = ItemUse::all();
+        $itemUses = ItemUse::with('item')->get();
         return view('items.item_use.index', compact('itemUses'));
     }
 
     public function createItemUse()
     {
-        $items = ItemsIn::all(); // Untuk select item
+        $items = ItemsIn::all();
         return view('items.item_use.create', compact('items'));
     }
 
     public function storeItemUse(Request $request)
     {
-        ItemUse::create($request->all());
-        return redirect()->route('item_use.index')->with('success', 'Penggunaan item berhasil ditambahkan');
+        $validated = $request->validate([
+            'item_id' => 'required|exists:items_in,id',
+            'total_use' => 'required|integer|min:1',
+            'date_use' => 'required|date',
+            'description' => 'nullable|string|max:255',
+        ]);
+
+        ItemUse::create($validated);
+
+        return redirect()->route('items.use.index')->with('success', 'Penggunaan item berhasil ditambahkan');
     }
 
     public function editItemUse($id)
     {
         $itemUse = ItemUse::findOrFail($id);
-        $items = ItemsIn::all(); // Untuk select item
+        $items = ItemsIn::all();
         return view('items.item_use.edit', compact('itemUse', 'items'));
     }
 
     public function updateItemUse(Request $request, $id)
     {
         $itemUse = ItemUse::findOrFail($id);
-        $itemUse->update($request->all());
-        return redirect()->route('item_use.index')->with('success', 'Penggunaan item berhasil diperbarui');
+
+        $validated = $request->validate([
+            'item_id' => 'required|exists:items_in,id',
+            'total_use' => 'required|integer|min:1',
+            'date_use' => 'required|date',
+            'description' => 'nullable|string|max:255',
+        ]);
+
+        $itemUse->update($validated);
+
+        return redirect()->route('items.use.index')->with('success', 'Penggunaan item berhasil diperbarui');
     }
 
-    public function showItemUse($id)
-    {
-        $itemUse = ItemUse::findOrFail($id);
-        return view('items.item_use.show', compact('itemUse'));
-    }
-
-    public function deleteItemUse($id)
-    {
-        ItemUse::destroy($id);
-        return redirect()->route('item_use.index')->with('success', 'Penggunaan item berhasil dihapus');
-    }
-
-    // CRUD untuk DamageItem
+    // ----- Damage Item -----
     public function indexDamageItem()
     {
-        $damages = DamageItem::all();
-        return view('items.damage_item.index', compact('damages'));
+        $damages = DamageItem::with('item')->get();
+        return view('items.damage_items.index', compact('damages'));
     }
 
     public function createDamageItem()
     {
         $items = ItemsIn::all();
-        return view('items.damage_item.create', compact('items'));
+        return view('items.damage_items.create', compact('items'));
     }
 
     public function storeDamageItem(Request $request)
     {
-        DamageItem::create($request->all());
-        return redirect()->route('damage_item.index')->with('success', 'Kerusakan item berhasil ditambahkan');
+        $validated = $request->validate([
+            'item_id' => 'required|exists:items_in,id',
+            'date_damage' => 'required|date',
+            'total_item' => 'required|integer|min:1',
+            'type_item' => 'required|in:inventaris,bahan',
+        ]);
+
+        DamageItem::create($validated);
+
+        return redirect()->route('items.damage.index')->with('success', 'Kerusakan item berhasil ditambahkan');
     }
 
     public function editDamageItem($id)
     {
         $damage = DamageItem::findOrFail($id);
         $items = ItemsIn::all();
-        return view('items.damage_item.edit', compact('damage', 'items'));
+        return view('items.damage_items.edit', compact('damage', 'items'));
     }
 
     public function updateDamageItem(Request $request, $id)
     {
         $damage = DamageItem::findOrFail($id);
-        $damage->update($request->all());
-        return redirect()->route('damage_item.index')->with('success', 'Kerusakan item berhasil diperbarui');
+
+        $validated = $request->validate([
+            'item_id' => 'required|exists:items_in,id',
+            'date_damage' => 'required|date',
+            'total_item' => 'required|integer|min:1',
+            'type_item' => 'required|in:inventaris,bahan',
+        ]);
+
+        $damage->update($validated);
+
+        return redirect()->route('items.damage.index')->with('success', 'Kerusakan item berhasil diperbarui');
     }
 
-    public function showDamageItem($id)
-    {
-        $damage = DamageItem::findOrFail($id);
-        return view('items.damage_item.show', compact('damage'));
-    }
-
-    public function deleteDamageItem($id)
-    {
-        DamageItem::destroy($id);
-        return redirect()->route('damage_item.index')->with('success', 'Kerusakan item berhasil dihapus');
-    }
-
-    // CRUD untuk RepairDamageItem
+    // ----- Repair Damage Item -----
     public function indexRepairDamageItem()
     {
-        $repairs = RepairDamageItem::all();
+        $repairs = RepairDamageItem::with('damage')->get();
         return view('items.repair_damage_item.index', compact('repairs'));
     }
 
@@ -167,8 +177,16 @@ class ItemController extends Controller
 
     public function storeRepairDamageItem(Request $request)
     {
-        RepairDamageItem::create($request->all());
-        return redirect()->route('repair_damage_item.index')->with('success', 'Perbaikan item berhasil ditambahkan');
+        $validated = $request->validate([
+            'damage_item_id' => 'required|exists:damage_items,id',
+            'information' => 'nullable|string|max:255',
+            'repair_completion_date' => 'required|date',
+            'name_technician' => 'required|string|max:255',
+        ]);
+
+        RepairDamageItem::create($validated);
+
+        return redirect()->route('items.repair.index')->with('success', 'Perbaikan item berhasil ditambahkan');
     }
 
     public function editRepairDamageItem($id)
@@ -181,19 +199,16 @@ class ItemController extends Controller
     public function updateRepairDamageItem(Request $request, $id)
     {
         $repair = RepairDamageItem::findOrFail($id);
-        $repair->update($request->all());
-        return redirect()->route('repair_damage_item.index')->with('success', 'Perbaikan item berhasil diperbarui');
-    }
 
-    public function showRepairDamageItem($id)
-    {
-        $repair = RepairDamageItem::findOrFail($id);
-        return view('items.repair_damage_item.show', compact('repair'));
-    }
+        $validated = $request->validate([
+            'damage_item_id' => 'required|exists:damage_items,id',
+            'information' => 'nullable|string|max:255',
+            'repair_completion_date' => 'required|date',
+            'name_technician' => 'required|string|max:255',
+        ]);
 
-    public function deleteRepairDamageItem($id)
-    {
-        RepairDamageItem::destroy($id);
-        return redirect()->route('repair_damage_item.index')->with('success', 'Perbaikan item berhasil dihapus');
+        $repair->update($validated);
+
+        return redirect()->route('items.repair.index')->with('success', 'Perbaikan item berhasil diperbarui');
     }
 }

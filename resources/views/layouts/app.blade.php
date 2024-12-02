@@ -42,7 +42,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="{{ route('items.in.index') }}">
+                        <a href="{{ route('items_in.index') }}">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Stok Barang</span>
                         </a>
@@ -63,7 +63,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="{{ route('loan_conditions.index') }}">
+                        <a href="{{ route('loans_conditions.index') }}">
                             <i class='bx bx-wallet icon' ></i>
                             <span class="text nav-text">Pengembalian</span>
                         </a>

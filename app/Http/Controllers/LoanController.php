@@ -10,26 +10,20 @@ use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
-    // Loans
-    public function index()
+    // Loans Management
+    public function indexLoans()
     {
         $loans = Loans::all();
         return view('loans.index', compact('loans'));
     }
 
-    public function show($id)
-    {
-        $loan = Loans::with(['item', 'condition', 'responsibility'])->findOrFail($id);
-        return view('loans.show', compact('loan'));
-    }
-
-    public function create()
+    public function createLoan()
     {
         $items = ItemsIn::all();
         return view('loans.create', compact('items'));
     }
 
-    public function store(Request $request)
+    public function storeLoan(Request $request)
     {
         $validated = $request->validate([
             'name_loan' => 'required|string|unique:loans,name_loan',
@@ -50,14 +44,14 @@ class LoanController extends Controller
         return redirect()->route('loans.index');
     }
 
-    public function edit($id)
+    public function editLoan($id)
     {
         $loan = Loans::findOrFail($id);
         $items = ItemsIn::all();
         return view('loans.edit', compact('loan', 'items'));
     }
 
-    public function update(Request $request, $id)
+    public function updateLoan(Request $request, $id)
     {
         $loan = Loans::findOrFail($id);
         $validated = $request->validate([
@@ -79,17 +73,23 @@ class LoanController extends Controller
         return redirect()->route('loans.index');
     }
 
-    public function destroy($id)
+    public function deleteLoan($id)
     {
         Loans::destroy($id);
         return redirect()->route('loans.index');
     }
 
-    // LoansCondition
+    // Loans Condition Management
+    public function indexLoanConditions()
+    {
+        $conditions = LoansCondition::all();
+        return view('loans_conditions.index', compact('conditions'));
+    }
+
     public function createLoanCondition()
     {
         $loans = Loans::all();
-        return view('loans_condition.create', compact('loans'));
+        return view('loans_conditions.create', compact('loans'));
     }
 
     public function storeLoanCondition(Request $request)
@@ -103,25 +103,19 @@ class LoanController extends Controller
         ]);
 
         LoansCondition::create($validated);
-        return redirect()->route('loans_condition.index');
-    }
-
-    public function showLoanCondition($id)
-    {
-        $loanCondition = LoansCondition::with('loan')->findOrFail($id);
-        return view('loans_condition.show', compact('loanCondition'));
+        return redirect()->route('loan_conditions.index');
     }
 
     public function editLoanCondition($id)
     {
-        $loanCondition = LoansCondition::findOrFail($id);
+        $condition = LoansCondition::findOrFail($id);
         $loans = Loans::all();
-        return view('loans_condition.edit', compact('loanCondition', 'loans'));
+        return view('loans_conditions.edit', compact('condition', 'loans'));
     }
 
     public function updateLoanCondition(Request $request, $id)
     {
-        $loanCondition = LoansCondition::findOrFail($id);
+        $condition = LoansCondition::findOrFail($id);
         $validated = $request->validate([
             'loan_id' => 'required|exists:loans,id',
             'date_return_item' => 'required|date',
@@ -130,21 +124,27 @@ class LoanController extends Controller
             'photo_report' => 'nullable|image|max:2048',
         ]);
 
-        $loanCondition->update($validated);
-        return redirect()->route('loans_condition.index');
+        $condition->update($validated);
+        return redirect()->route('loan_conditions.index');
     }
 
-    public function destroyLoanCondition($id)
+    public function deleteLoanCondition($id)
     {
         LoansCondition::destroy($id);
-        return redirect()->route('loans_condition.index');
+        return redirect()->route('loans_conditions.index');
     }
 
-    // ResponsibilityItemLoans
+    // Responsibility Loans Management
+    public function indexResponsibilityLoans()
+    {
+        $responsibilities = ResponsibilityItemLoans::all();
+        return view('responsibility_loans.index', compact('responsibilities'));
+    }
+
     public function createResponsibilityLoan()
     {
         $loans = Loans::all();
-        return view('responsibility_item_loans.create', compact('loans'));
+        return view('responsibility_loans.create', compact('loans'));
     }
 
     public function storeResponsibilityLoan(Request $request)
@@ -155,37 +155,31 @@ class LoanController extends Controller
         ]);
 
         ResponsibilityItemLoans::create($validated);
-        return redirect()->route('responsibility_item_loans.index');
-    }
-
-    public function showResponsibilityLoan($id)
-    {
-        $responsibilityLoan = ResponsibilityItemLoans::with('loan')->findOrFail($id);
-        return view('responsibility_item_loans.show', compact('responsibilityLoan'));
+        return redirect()->route('responsibility_loans.index');
     }
 
     public function editResponsibilityLoan($id)
     {
-        $responsibilityLoan = ResponsibilityItemLoans::findOrFail($id);
+        $responsibility = ResponsibilityItemLoans::findOrFail($id);
         $loans = Loans::all();
-        return view('responsibility_item_loans.edit', compact('responsibilityLoan', 'loans'));
+        return view('responsibility_loans.edit', compact('responsibility', 'loans'));
     }
 
     public function updateResponsibilityLoan(Request $request, $id)
     {
-        $responsibilityLoan = ResponsibilityItemLoans::findOrFail($id);
+        $responsibility = ResponsibilityItemLoans::findOrFail($id);
         $validated = $request->validate([
             'loan_id' => 'required|exists:loans,id',
             'description_responsibility' => 'required|string',
         ]);
 
-        $responsibilityLoan->update($validated);
-        return redirect()->route('responsibility_item_loans.index');
+        $responsibility->update($validated);
+        return redirect()->route('responsibility_loans.index');
     }
 
-    public function destroyResponsibilityLoan($id)
+    public function deleteResponsibilityLoan($id)
     {
         ResponsibilityItemLoans::destroy($id);
-        return redirect()->route('responsibility_item_loans.index');
+        return redirect()->route('responsibility_loans.index');
     }
 }

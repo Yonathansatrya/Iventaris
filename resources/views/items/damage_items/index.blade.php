@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="mb-4">Daftar Item Rusak</h1>
 
-    <a href="{{ route('damaged-items.create') }}" class="btn btn-primary mb-3">Tambah Item Rusak</a>
+    <a href="{{ route('items.damage.create') }}" class="btn btn-primary mb-3">Tambah Item Rusak</a>
 
     <table class="table table-bordered">
         <thead>
@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($damagedItems as $key => $damagedItem)
+            @foreach( $damages as $key => $damagedItem)
             <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $damagedItem->item->name }}</td>

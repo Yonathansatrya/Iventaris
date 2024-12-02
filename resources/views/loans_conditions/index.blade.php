@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Daftar Kondisi Peminjaman</h1>
-    <a href="{{ route('loans_condition.create') }}" class="btn btn-primary mb-3">Tambah Kondisi</a>
+    <a href="{{ route('loans_conditions.create') }}" class="btn btn-primary mb-3">Tambah Kondisi</a>
     <table class="table table-bordered">
         <thead>
             <tr>
