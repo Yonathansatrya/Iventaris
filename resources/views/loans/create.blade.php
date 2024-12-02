@@ -1,5 +1,6 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="{{ asset('css/loans/create.css') }}">
+
 @section('content')
 <div class="container">
     <h1>Tambah Loan</h1>

@@ -23,5 +23,6 @@
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>
     </form>
+    <div></div>
 </div>
 @endsection

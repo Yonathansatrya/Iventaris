@@ -18,7 +18,6 @@ Route::middleware(['Jabatan:Laboran'])->group(function () {
             Route::get('/bahan', [ItemController::class, 'indexBahan'])->name('items_in.bahan');
             Route::get('/create', [ItemController::class, 'createItemsIn'])->name('items_in.create');
             Route::post('/', [ItemController::class, 'storeItemsIn'])->name('items_in.store');
-            Route::get('/{id}', [ItemController::class, 'showItemsIn'])->name('items_in.show');
             Route::get('/{id}/edit', [ItemController::class, 'editItemsIn'])->name('items_in.edit');
             Route::put('/{id}', [ItemController::class, 'updateItemsIn'])->name('items_in.update');
             Route::delete('/{id}', [ItemController::class, 'deleteItemsIn'])->name('items_in.delete');
@@ -87,3 +86,4 @@ Route::get('password/reset', [AuthController::class, 'RequestForm'])->name('pass
 Route::post('password/email', [AuthController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('password/reset/{token}', [AuthController::class, 'showReset'])->name('password.reset');
 Route::post('password/reset', [AuthController::class, 'reset'])->name('password.update');
+

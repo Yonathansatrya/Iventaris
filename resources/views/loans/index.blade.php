@@ -27,8 +27,8 @@
                     <td>{{ $loan->loan_end_date }}</td>
                     <td>{{ $loan->description }}</td>
                     <td>{{ $loan->status }}</td>
-                    <td>
-                        <a href="{{ route('loans.show', $loan->id) }}" class="btn btn-info">Detail</a>
+
+"{{ route('loans.show', $loan->id) }}" class="btn btn-info">Detail</a>
                         <a href="{{ route('loans.edit', $loan->id) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ route('loans.destroy', $loan->id) }}" method="POST" style="display:inline;">
                             @csrf

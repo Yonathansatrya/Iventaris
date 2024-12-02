@@ -27,4 +27,5 @@
         <button type="submit" class="btn btn-success">Simpan</button>
     </form>
 </div>
+<script></script>
 @endsection

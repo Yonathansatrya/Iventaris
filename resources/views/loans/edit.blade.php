@@ -55,4 +55,5 @@
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
-aaeb53c3
+</div>
+@endsection
