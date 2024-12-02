@@ -166,13 +166,13 @@ class ItemController extends Controller
     public function indexRepairDamageItem()
     {
         $repairs = RepairDamageItem::with('damage')->get();
-        return view('items.repair_damage_item.index', compact('repairs'));
+        return view('items.repair_damaged_items.index', compact('repairs'));
     }
 
     public function createRepairDamageItem()
     {
         $damages = DamageItem::all();
-        return view('items.repair_damage_item.create', compact('damages'));
+        return view('items.repair_damage_items.create', compact('damages'));
     }
 
     public function storeRepairDamageItem(Request $request)
@@ -193,7 +193,7 @@ class ItemController extends Controller
     {
         $repair = RepairDamageItem::findOrFail($id);
         $damages = DamageItem::all();
-        return view('items.repair_damage_item.edit', compact('repair', 'damages'));
+        return view('items.repair_damage_items.edit', compact('repair', 'damages'));
     }
 
     public function updateRepairDamageItem(Request $request, $id)

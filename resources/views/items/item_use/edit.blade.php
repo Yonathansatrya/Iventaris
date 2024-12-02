@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="mb-4">Edit Penggunaan Item</h1>
 
-    <form action="{{ route('item_use.update', $itemUse->id) }}" method="POST">
+    <form action="{{ route('items.use.update', $itemUse->id) }}" method="POST">
         @csrf
         @method('PUT')
 

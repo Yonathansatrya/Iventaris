@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="mb-4">Tambah Penggunaan Item</h1>
 
-    <form action="{{ route('item_use.store') }}" method="POST">
+    <form action="{{ route('items.use.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="item_id">Item</label>

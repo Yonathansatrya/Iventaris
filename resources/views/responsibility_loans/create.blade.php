@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Tambah Tanggung Jawab Peminjaman</h1>
-    <form action="{{ route('responsibility_item_loans.store') }}" method="POST">
+    <form action="{{ route('responsibility_loans.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="loan_id" class="form-label">Loan ID</label>

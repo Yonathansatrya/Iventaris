@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="mb-4">Daftar Penggunaan Item</h1>
 
-    <a href="{{ route('item_use.create') }}" class="btn btn-primary mb-3">Tambah Penggunaan Item</a>
+    <a href="{{ route('items.use.create') }}" class="btn btn-primary mb-3">Tambah Penggunaan Item</a>
 
     <table class="table table-bordered">
         <thead>

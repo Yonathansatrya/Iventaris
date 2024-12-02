@@ -12,7 +12,7 @@ class CreateLoansTable extends Migration
             $table->id();
             $table->string('name_loan');
             $table->foreignId('item_id')->constrained('items_in')->onDelete('cascade');
-            $table->enum('role', ['guru', 'karyawan']);
+            $table->enum('role', ['murid', 'karyawan']);
             $table->string('specification');
             $table->integer('total_loans');
             $table->date('loan_start_date');

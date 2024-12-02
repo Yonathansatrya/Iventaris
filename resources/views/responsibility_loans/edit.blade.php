@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Edit Tanggung Jawab Peminjaman</h1>
-    <form action="{{ route('responsibility_item_loans.update', $responsibility->id) }}" method="POST">
+    <form action="{{ route('responsibility_loans.update', $responsibility->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-3">

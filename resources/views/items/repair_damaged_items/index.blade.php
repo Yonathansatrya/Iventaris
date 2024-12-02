@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="mb-4">Daftar Item yang Diperbaiki</h1>
 
-    <a href="{{ route('repair-damaged-items.create') }}" class="btn btn-primary mb-3">Tambah Perbaikan Item</a>
+    <a href="{{ route('items.repair.create') }}" class="btn btn-primary mb-3">Tambah Perbaikan Item</a>
 
     <table class="table table-bordered">
         <thead>
@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($repairItems as $key => $repairItem)
+            @foreach($repairs as $key => $repairItem)
             <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $repairItem->damagedItem->item->name }}</td>

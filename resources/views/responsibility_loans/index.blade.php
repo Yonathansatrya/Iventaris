@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Daftar Tanggung Jawab Peminjaman</h1>
-    <a href="{{ route('responsibility_item_loans.create') }}" class="btn btn-primary mb-3">Tambah Tanggung Jawab</a>
+    <a href="{{ route('responsibility_loans.create') }}" class="btn btn-primary mb-3">Tambah Tanggung Jawab</a>
     <table class="table table-bordered">
         <thead>
             <tr>
