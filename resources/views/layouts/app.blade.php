@@ -19,9 +19,10 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="{{ asset('school.png') }}" alt="">
+                    <a href="https://smkbagimunegeriku.sch.id/" target="_blank">
+                        <img src="{{ asset('school.png') }}" alt="">
+                    </a>
                 </span>
-
                 <div class="text logo-text">
                     <span class="name">Iventory</span>
                     <span class="profession">System RPL</span>
@@ -41,7 +42,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="{{ route('items.index') }}">
+                        <a href="{{ route('items.in.index') }}">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Stok Barang</span>
                         </a>
@@ -55,26 +56,39 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ route('items.damage.index') }}">
                             <i class='bx bx-heart icon' ></i>
                             <span class="text nav-text">Rusak</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ route('loan_conditions.index') }}">
                             <i class='bx bx-wallet icon' ></i>
                             <span class="text nav-text">Pengembalian</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ route('responsibility_loans.index') }}">
                             <i class='bx bx-bell icon'></i>
-                            <span class="text nav-text">Report Data</span>
+                            <span class="text nav-text">Report Data Pengembalian</span>
                         </a>
                     </li>
 
+                    <li class="nav-link">
+                        <a href="{{ route('items.use.index') }}">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Penggunaan Barang</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{{ route('items.repair.index') }}">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Perbaikan Barang</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 

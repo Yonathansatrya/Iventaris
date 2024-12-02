@@ -12,6 +12,7 @@ class CreateItemUseTable extends Migration
             $table->id();
             $table->foreignId('item_id')->constrained('items_in')->onDelete('cascade');
             $table->integer('total_use');
+            $table->date('date_use');
             $table->string('description');
             $table->timestamps();
         });

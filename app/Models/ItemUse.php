@@ -9,7 +9,7 @@ class ItemUse extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['item_id', 'total_use', 'description'];
+    protected $fillable = ['item_id', 'total_use', 'date_use', 'description'];
 
     public function item()
     {
