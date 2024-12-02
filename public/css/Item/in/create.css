@@ -1,0 +1,149 @@
+.container {
+    max-width: 600px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 200px;
+}
+
+.form-container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    font-size: 14px;
+    padding: 10px;
+    height: 38px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+button.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+button.btn i {
+    margin-right: 8px;
+}
+
+.btn-block {
+    margin-bottom: 10px;
+}
+
+.btn-primary, .btn-secondary, .btn-success {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Tombol Umum */
+button.btn, a.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Tombol Kembali (Primary) */
+.btn-primary, .btn-secondary, .btn-success {
+    color: white;
+    background-color: #007bff;
+    border: 1px solid transparent;
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Tombol Kembali yang lebih spesifik */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Tombol Kembali (Sekunder) */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Tombol Kembali (Berhasil) */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Efek Fokus dan Hover */
+button.btn:hover, a.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button.btn:focus, a.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5);
+}
+
+/* Tombol Kembali yang lebar */
+.btn-block {
+    width: 100%;
+    margin-bottom: 10px;
+}

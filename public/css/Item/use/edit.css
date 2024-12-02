@@ -1,0 +1,92 @@
+/* General Container Styling */
+.container {
+    padding: 0 100px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
+}
+
+/* Heading Styling */
+h1.mb-4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form Group Labels */
+.form-group label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Input and Select Styling */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Textarea Specific Styling */
+textarea.form-control {
+    height: 120px;
+    resize: none;
+}
+
+/* Button Styling */
+button.btn-warning {
+    background-color: #ffc107;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+/* Back Button Styling */
+a.btn-primary {
+    background-color: #6f42c1;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+a.btn-primary:hover {
+    background-color: #5a30a1;
+}
+
+/* Form Layout Adjustments */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Button Container Layout */
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
