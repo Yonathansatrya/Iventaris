@@ -30,8 +30,13 @@
         </div>
         <div class="mb-3">
             <label for="type_item" class="form-label">Type</label>
-            <input type="text" name="type_item" class="form-control" required>
+            <select name="type_item" id="type_item" class="form-control" required>
+                <option value="" disabled selected>Pilih Tipe</option>
+                <option value="inventaris">Inventaris</option>
+                <option value="bahan">Bahan</option>
+            </select>
         </div>
+
         <button type="submit" class="btn btn-success">Save</button>
     </form>
 </div>

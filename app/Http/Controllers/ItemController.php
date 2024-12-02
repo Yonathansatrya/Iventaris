@@ -11,11 +11,18 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
     // CRUD untuk ItemsIn
-    public function indexItemsIn()
+    public function indexInventaris()
     {
-        $items = ItemsIn::all();
-        return view('items.items_in.index', compact('items'));
+        $items = Item::where('type_item', 'inventaris')->get();
+        return view('items_in.index_inventaris', compact('items'));
     }
+
+    public function indexBahan()
+    {
+        $items = Item::where('type_item', 'bahan')->get();
+        return view('items_in.index_bahan', compact('items'));
+    }
+
 
     public function createItemsIn()
     {

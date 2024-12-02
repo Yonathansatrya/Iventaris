@@ -14,7 +14,8 @@ Route::middleware(['Jabatan:Laboran'])->group(function () {
 
     Route::prefix('items')->group(function () {
         Route::prefix('in')->group(function () {
-            Route::get('/', [ItemController::class, 'indexItemsIn'])->name('items_in.index');
+            Route::get('/inventaris', [ItemController::class, 'indexInventaris'])->name('items_in.inventaris');
+            Route::get('/bahan', [ItemController::class, 'indexBahan'])->name('items_in.bahan');
             Route::get('/create', [ItemController::class, 'createItemsIn'])->name('items_in.create');
             Route::post('/', [ItemController::class, 'storeItemsIn'])->name('items_in.store');
             Route::get('/{id}', [ItemController::class, 'showItemsIn'])->name('items_in.show');
@@ -22,6 +23,7 @@ Route::middleware(['Jabatan:Laboran'])->group(function () {
             Route::put('/{id}', [ItemController::class, 'updateItemsIn'])->name('items_in.update');
             Route::delete('/{id}', [ItemController::class, 'deleteItemsIn'])->name('items_in.delete');
         });
+
 
         Route::prefix('use')->group(function () {
             Route::get('/', [ItemController::class, 'indexItemUse'])->name('items.use.index');

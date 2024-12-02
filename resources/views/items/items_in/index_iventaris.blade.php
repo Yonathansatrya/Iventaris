@@ -2,9 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h1>Items In</h1>
+    <h1>Items - Inventaris</h1>
 
-    <!-- Menampilkan pesan sukses jika ada -->
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -13,11 +12,8 @@
 
     <a href="{{ route('items_in.create') }}" class="btn btn-primary mb-3">Add New Item</a>
 
-    <!-- Menampilkan tabel jika ada data, atau pesan jika kosong -->
     @if($items->isEmpty())
-        <div class="alert alert-warning">
-            No items available.
-        </div>
+        <div class="alert alert-warning">No Inventaris items available.</div>
     @else
         <table class="table mt-4">
             <thead>

@@ -31,7 +31,10 @@
         </div>
         <div class="mb-3">
             <label for="type_item" class="form-label">Type</label>
-            <input type="text" name="type_item" class="form-control" value="{{ $item->type_item }}" required>
+            <select name="type_item" id="type_item" class="form-control" required>
+                <option value="inventaris" {{ $item->type_item == 'inventaris' ? 'selected' : '' }}>Inventaris</option>
+                <option value="bahan" {{ $item->type_item == 'bahan' ? 'selected' : '' }}>Bahan</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
