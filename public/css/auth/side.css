@@ -307,6 +307,7 @@ body.dark .switch::before{
 body.dark .home .text{
     color: var(--text-color);
 }
+<<<<<<< HEAD
 
 /* ===== Dropdown ===== */
 .sidebar li .dropdown {
@@ -372,3 +373,5 @@ body.dark .home .text{
 .sidebar.close li .dropdown .dropdown-menu {
     display: none;
 }
+=======
+>>>>>>> d6eb0fc16e56d2a2cd4f7c733ffb9c41aaeb53c3
